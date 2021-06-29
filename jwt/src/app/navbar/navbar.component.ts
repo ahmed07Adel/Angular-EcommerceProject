@@ -15,18 +15,23 @@ export class NavbarComponent implements OnInit {
 username= '';
 cat: CategoryModel[];
 sel;
+log: LoginModel;
 p: ProductModel[];
 users: LoginModel;
   constructor(private service: ProductService, public accService: AccountService, private route: Router) {
-
-  }
+// if (accService.Login(this.log)) {
+//   // route.navigate
+//   (['chat']);
+//   }
+}
   public Logout = () => {
 this.accService.LogOut();
 sessionStorage.removeItem('loggeduser');
 var r = document.getElementById('userhide');
 r.style.display = 'none';
-window.location.reload();
+// window.location.reload();
 this.route.navigate(['login']);
+
 
   }
   

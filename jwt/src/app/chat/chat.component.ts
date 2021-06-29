@@ -14,45 +14,45 @@ export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
-    // this.username = sessionStorage.getItem('loggeduser');
-// this.username = this.msgDto.user;
+    this.username = sessionStorage.getItem('loggeduser');
+this.username = this.msgDto.user;
     this.chatService.retrieveMappedObject().subscribe( (receivedObj: ChatModel) => { this.addToInbox(receivedObj);}); 
   }
   msgDto: ChatModel = new ChatModel();
   msgInboxArray: ChatModel[] = [];
 
-  send(): void {
-    debugger;
-    // var x =  document.getElementById('cli');
-    // x.nodeValue='';
-    if(this.msgDto) {
-      if(this.msgDto.user.length == 0 || this.msgDto.message.length == 0){
-        window.alert("Both fields are required.");
-        return;
-      } else {
-        this.chatService.broadcastMessage(this.msgDto);        // Send the message via a service
-                               
-        
-      }
-    }
-  }
   // send(): void {
   //   debugger;
-
+  //   // var x =  document.getElementById('cli');
+  //   // x.nodeValue='';
   //   if(this.msgDto) {
-  //     if(this.msgDto.message.length == 0 || this.msgDto.message.length == null){
-  //       window.alert("Message fields required.");
+  //     if(this.msgDto.user.length == 0 || this.msgDto.message.length == 0){
+  //       window.alert("Both fields are required.");
   //       return;
   //     } else {
-  //       this.chatService.broadcastMessage(this.msgDto);                   // Send the message via a service
+  //       this.chatService.broadcastMessage(this.msgDto);        // Send the message via a service                                    
   //     }
-  //    }
+  //   }
   // }
+  send(): void {
+    debugger;
+
+    if(this.msgDto) {
+      if(this.msgDto.message.length == 0){
+        window.alert("Message field required.");
+        return;
+      } else {
+        this.chatService.broadcastMessage(this.msgDto);                   // Send the message via a service
+      }
+     }
+  }
   addToInbox(obj: ChatModel) {
     debugger;
     let newObj = new ChatModel();
-    newObj.user = obj.user;
-    // newObj.user = this.username;
+    // newObj.user = obj.user;
+    //  var x = localStorage.getItem('loggeduser');
+    //  newObj.user = x;
+     newObj.user = this.username;
     newObj.message = obj.message;
     this.msgInboxArray.push(newObj);
 

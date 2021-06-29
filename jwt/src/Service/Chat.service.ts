@@ -25,6 +25,9 @@ private sharedObj = new Subject<ChatModel>();
       await this.start();
     });
      sessionStorage.getItem('loggeduser');
+     var x = sessionStorage.getItem('userId');
+
+    // this.ch.user = x;
     this.connection.on("ReceiveOne", (user, message) => { this.mapReceivedMessage(user, message); });
    this.start();  
 
@@ -41,7 +44,9 @@ private sharedObj = new Subject<ChatModel>();
     } 
   }
   private mapReceivedMessage(user: string, message: string): void {
-    this.receivedMessageObject.user = user;
+   var UserEmail = sessionStorage.getItem('loggeduser');
+user = UserEmail;
+    this.receivedMessageObject.user = UserEmail;
     this.receivedMessageObject.message = message;
     this.sharedObj.next(this.receivedMessageObject);
  }

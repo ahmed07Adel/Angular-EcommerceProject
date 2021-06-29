@@ -3,6 +3,7 @@ import { ProductService } from './../../Service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { modalConfigDefaults } from 'ngx-bootstrap/modal/modal-options.class';
 import { ProductModel } from 'src/Models/ProductModel';
+import { AccountService } from 'src/Service/Account.service';
 
 @Component({
   selector: 'app-products-list',
@@ -16,10 +17,14 @@ pr: ProductModel[] = [];
 cat: CategoryModel[];
 ProductName: string;
 sel;
+userDetails;
 
-  constructor(private service: ProductService) { }
+  constructor(private service: ProductService,private accservice: AccountService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token')!= null) {
+      localStorage.getItem('userId');                       
+          }
     this.service.GetCategories().subscribe(d => {
       this.cat = d;
     }, err => console.log(err));
@@ -60,5 +65,14 @@ this.ngOnInit();
 }
 
   }
+//   GetUser(){
+//     if (localStorage.getItem('token')!= null) {
+//       debugger;
+//       this.accservice.GetUserId().subscribe(x=>{
+// this.userDetails = x;
+// console.log(x);
+//      }, err => console.log(err));
+//     }
+//   }
 
 }

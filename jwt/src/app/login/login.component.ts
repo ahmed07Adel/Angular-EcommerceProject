@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private service: AccountService, private fb: FormBuilder, private route: Router) { }
+  id: string;
 log: LoginModel;
 userLog: FormGroup;
 message: string;
+userId: string;
 messageValidate: {
   email: {
     required: 'Email Needed'
@@ -28,8 +30,10 @@ messageValidate: {
 };
 
   ngOnInit(): void {
+    this.userId='';
     this.message = '';
     this.log = {
+     
       email: '',
       password: '',
       rememberMe: false
@@ -51,22 +55,26 @@ messageValidate: {
   login() {
 if (this.userLog.valid) {
   this.ValidateModel();
+  
   this.service.Login(this.log).subscribe(success => {
+    console.log(success);
     localStorage.setItem('token', success['message']);
-localStorage.getItem('token');
+   
+    localStorage.setItem('userId',success['userId']);
+        localStorage.getItem('userId');
+localStorage.getItem('token');                
 sessionStorage.setItem('loggeduser',this.log.email);
-// window.location.reload();
-
+localStorage.getItem('loggeduser');
     this.route.navigate(['home']);
 
 
-  }, err => console.log(err));
+  }, err => console.log(err));  
 
 }
+
   }
   GetToken() {
     return localStorage.getItem('token');
   }
-
 
 }

@@ -17,6 +17,8 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { ChatComponent } from './chat/chat.component';
+import { AuthGuard } from 'src/Service/auth.guard';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ChatComponent } from './chat/chat.component';
     CreateProductComponent,
     EditProductComponent,
     RegisterAdminComponent,
-    ChatComponent
+    ChatComponent,
+    ModalComponent
 
   ],
   imports: [
@@ -43,7 +46,7 @@ import { ChatComponent } from './chat/chat.component';
 
 
   ],
-  providers: [AccountService, {
+  providers: [ AccountService, AuthGuard,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

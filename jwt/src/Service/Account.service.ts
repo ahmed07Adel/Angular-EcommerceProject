@@ -17,6 +17,11 @@ export class AccountService{
     withCredentials: true
 
   };
+  // Logout(){
+  //   return this.http.post('https://localhost:44379/api/Account/Logout');
+  // }
+  
+  
   RegiterAdmin(reg: RegisterModel): Observable<RegisterModel>{
     return this.http.post<RegisterModel>('https://localhost:44379/api/Account/AdminRegister', reg, this.headers).pipe();
   }
@@ -29,5 +34,6 @@ export class AccountService{
   }
   public LogOut = () => {
 localStorage.removeItem('token');
+localStorage.removeItem('userId');
   }
 }

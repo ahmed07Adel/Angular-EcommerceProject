@@ -5,8 +5,9 @@
   <div class="ud-body">
     <div class="msg-box">
       <ul>       
-        <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-message' : 'ex-message'">{{mObj.user}} :<br /><span class="msg-italic-style">{{mObj.message}}<br><i fa fa-date style="margin-left: 11pc;">{{today | date:'medium' }}</i> </span></li>
-       
+        <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-message' : 'ex-message'">{{mObj.user}}<span class="msg-italic-style">{{mObj.message}}<br><i fa fa-date style="margin-left: 11pc;">{{today | date:'medium' }}</i> </span></li>
+        <!-- <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-message' : 'ex-message'"><span class="msg-italic-style">{{mObj.message}}<br><i fa fa-date style="margin-left: 11pc;">{{today | date:'medium' }}</i> </span></li> -->
+
       </ul>
     </div>
     <div class="row">
@@ -14,7 +15,7 @@
       <button class="send-btn" (click)= "send()"><i class="fa fa-paper-plane"></i></button>
     </div>
     <br>
-    <input type="text" placeholder="Your name" class="form-control col-md-5" [(ngModel)]="msgDto.user" />
+    <!-- <input type="text" placeholder="Your name" class="form-control col-md-5" style="display: none;" [(ngModel)]="msgDto.user" /> -->
     <!-- <input type="text" placeholder="Your name" class="name-box" value="{{username}}" /> -->
 
   </div>
