@@ -1,0 +1,88 @@
+<div class="container">
+ <div class="card bg-light">
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <h4 class="card-title mt-3 text-center">Create Account</h4>
+    <p class="text-center">Get started with your free account</p>
+    <p>
+      <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+      <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+    </p>
+    <p class="divider-text">
+          <span class="bg-light">OR</span>
+      </p>
+    <form [formGroup]="userForm" (ngSubmit)="register()">
+    <!-- <div class="form-group input-group">
+      <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+       </div>
+          <input name="" class="form-control" placeholder="Full name" type="text">
+      </div>  -->
+      <div class="form-group input-group">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+       </div>
+
+          <input name="email" formControlName="email" id="email" class="form-control" placeholder="Email address" type="email"
+           [ngClass]="{'is-invalid': !this.userForm.get('email').valid && this.userForm.get('email').touched}">
+
+
+      </div> <!-- form-group// -->
+
+
+     <!-- form-group end.// -->
+      <div class="form-group input-group">
+        <div class="form-group input-group">
+          <small class="text-danger" *ngIf="!this.userForm.get('email').valid && this.userForm.get('email').touched">{{messageValidate.email.required}}</small>
+          <small class="text-danger" *ngIf="isEmailExist()">
+            {{messageValidate.email.matchE}}
+                    </small>
+          </div>
+          <!-- <div class="form-group input-group">
+
+          <small *ngIf="isEmailExist()">
+            {{messageValidate.email.matchE}}
+                    </small>
+          </div> -->
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+          <input class="form-control" formControlName="password" id="password" placeholder="Create password" required minlength="5" [ngClass]="{'is-invalid': !this.userForm.get('password').valid && this.userForm.get('password').touched}" type="password">
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="form-group input-group">
+<div *ngIf="this.userForm.get('password').errors?.required">
+          <small class="text-danger" *ngIf="this.userForm.get('password').errors?.required">{{messageValidate.password.required}}</small>
+        </div>
+        <br>
+        <div *ngIf="this.userForm.get('password').errors?.minLength">
+                    <small class="text-danger" *ngIf="this.userForm.get('password').errors?.minLength">{{messageValidate.password.minLength}}</small>
+
+        </div>
+
+          </div>
+
+        <div class="input-group-prepend">
+
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+          <input class="form-control" formControlName="confirmpassword"
+           [ngClass]="{'is-invalid': !this.userForm.get('confirmpassword').valid && this.userForm.get('confirmpassword').touched}" id="confirmpassword"  placeholder="Repeat password" type="password">
+      </div> <!-- form-group// -->
+      <div class="form-group">
+        <div class="form-group input-group">
+
+          <small class="text-danger" *ngIf="isPathMatch()">confirm password </small>
+          </div>
+
+          <button type="submit" [disabled]="!userForm.valid || isPathMatch()" class="btn btn-primary"> Create Account </button>
+      </div> <!-- form-group// -->
+      <p class="text-center">Have an account? <a [routerLink]="['/login']" href="#" type="button">Log In</a> </p>
+  </form>
+  </article>
+  </div> <!-- card.// -->
+
+  </div>
+  <!--container end.//-->
+
+

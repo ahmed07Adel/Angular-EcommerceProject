@@ -1,0 +1,35 @@
+<div class="wrapper fadeInDown" style="margin-top: 6pc;">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <!-- <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div> -->
+
+    <!-- Login Form -->
+    <form [formGroup]="userLog" (ngSubmit)="login()">
+      <label for="email">Email</label>
+      <input name="email" formControlName="email" id="email" class="form-control" placeholder="Email address" type="email"
+      [ngClass]="{'is-invalid': !this.userLog.get('email').valid && this.userLog.get('email').touched}">
+      <label for="password">Password</label>
+
+      <input class="form-control" formControlName="password" id="password" placeholder="Create password" required minlength="5" [ngClass]="{'is-invalid': !this.userLog.get('password').valid && this.userLog.get('password').touched}" type="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+      <br>
+      <br>
+      <label for="password">RememberMe</label>
+<input type="checkbox" formControlName="rememberMe" class="form-control" id="rememberMe">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+    <div id="formFooter">
+
+    <a class="underlineHover" [routerLink]="['/register']">Donot have Account SignUp?</a>
+
+    </div>
+  </div>
+</div>

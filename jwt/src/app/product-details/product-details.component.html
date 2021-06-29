@@ -1,0 +1,136 @@
+<!--Section: Block Content-->
+<div class="container text-center" style="margin-top: 7pc; margin-bottom: 0px;" *ngIf="prod">
+<section class="mb-5">
+
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+
+      <div id="mdb-lightbox-ui"></div>
+
+      <div class="mdb-lightbox">
+
+        <div class="row product-gallery mx-1">
+
+          <head>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+          </head>
+
+          <div class="col-12 mb-0">
+            <figure class="view overlay rounded z-depth-1 main-img">
+              <a href="createImgPath(prod.productPic)"
+                data-size="710x823">
+                <img [src]="createImgPath(prod.productPic)" alt="profile picture" style="width:100%;"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+            <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
+              <a href="createImgPath(prod.productPic)"
+                data-size="710x823">
+                <img src="createImgPath(prod.productPic)"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+            <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
+              <a href="createImgPath(prod.productPic)"
+                data-size="710x823">
+                <img src="createImgPath(prod.productPic)"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+            <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
+              <a href="createImgPath(prod.productPic)"
+                data-size="710x823">
+                <img src="createImgPath(prod.productPic)"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-6">
+
+      <p class="mb-2 text-muted text-uppercase small">{{prod.category}}</p>
+      <h5>Rate This Product:</h5>
+      <ul class="list-inline rating-list"
+      *ngFor="let star of stars" style="display: inline-block" >
+        <li (click)="countStar(star)"
+            [ngClass]="{'selected': (star <= selectedValue)}">
+          <i class="fa fa-star"></i>
+        </li>
+  </ul>
+
+      <h3>{{prod.productName}}</h3>
+
+      <p><span class="mr-1"><strong><h3>{{prod.price}}.LE</h3></strong></span></p>
+      <h5 class="pt-1"><h2>Description:</h2>{{prod.description}}.</h5>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <!-- <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+              <td>Shirt 5407X</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
+              <td>Black</td>
+            </tr>
+
+          </tbody> -->
+        </table>
+      </div>
+      <hr>
+      <div class="table-responsive mb-2">
+        <table class="table table-sm table-borderless">
+          <tbody>
+            <tr>
+              <td class="pl-0 pb-0 w-25">Quantity</td>
+              <td class="pb-0">Select size</td>
+            </tr>
+            <tr>
+              <td class="pl-0">
+                <div class="def-number-input number-input safari_only mb-0">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    class="plus"></button>
+                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    class="minus"></button>
+                </div>
+              </td>
+              <td>
+                <div class="mt-1">
+                  <div class="form-check form-check-inline pl-0">
+                    <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
+                      checked>
+                    <label class="form-check-label small text-uppercase card-link-secondary"
+                      for="small">Small</label>
+                  </div>
+                  <div class="form-check form-check-inline pl-0">
+                    <input type="radio" class="form-check-input" id="medium" name="materialExampleRadios">
+                    <label class="form-check-label small text-uppercase card-link-secondary"
+                      for="medium">Medium</label>
+                  </div>
+                  <div class="form-check form-check-inline pl-0">
+                    <input type="radio" class="form-check-input" id="large" name="materialExampleRadios">
+                    <label class="form-check-label small text-uppercase card-link-secondary"
+                      for="large">Large</label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
+      <button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+          class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
+    </div>
+  </div>
+
+</section>
+<!--Section: Block Content-->
+</div>

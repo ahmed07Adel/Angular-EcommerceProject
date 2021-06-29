@@ -1,0 +1,32 @@
+<div class="container col-md-6" style="margin-top: 90px;">
+<form [formGroup]="prodM" (ngSubmit)="CreateProduct()">
+  <div class="form-outline mb-4">
+    <input type="text" class="form-control" formControlName="productname" id="productname" name="productName" />
+    <label class="form-label" for="productname">ProductName</label>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="text" class="form-control" formControlName="price" id="price" name="price" />
+    <label class="form-label" for="price">Price</label>
+  </div>
+  <div class="form-outline mb-4">
+  <select class="form-control" [(ngModel)]="sel" formControlName="category" name="category" id="category" (change)="onselect()">
+    <option value="Select Category">Select Category</option>
+    <option *ngFor="let c of categ" [ngValue]="c.id" name="category">{{c.name}}</option>
+ </select>
+ </div>
+ <div class="form-outline mb-4">
+  <input type="file" #file placeholder="Choose file" formControlName="productPic" (change)="uploadFile(file.files)">
+  <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+  <!-- <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+    <input type="file" class="form-control" (change)="HandleFiles($event)" formControlName="productPic" accept="image/*" id="productPic" name="productPic" >
+  </div> -->
+ </div>
+  <div class="form-outline mb-4">
+    <textarea rows="5" class="form-control" id="description" formControlName="description" name="description"></textarea>
+    <label class="form-label" for="description">Description</label>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block mb-4">Create</button>
+</form>
+</div>
+
