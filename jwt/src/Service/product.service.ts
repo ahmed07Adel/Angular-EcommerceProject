@@ -1,3 +1,4 @@
+import { AddToCartModel } from './../Models/AddToCartModel';
 import { CategoryModel } from './../Models/CategoryModel';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -18,8 +19,9 @@ export class ProductService {
     withCredentials: true
 
   };
-  AddProductToCart(){
-
+  AddProductToCart(add): Observable<AddToCartModel> {
+    debugger;
+    return this.http.post<AddToCartModel>('https://localhost:44379/api/Product/AddToCart', add).pipe();
   }
   ProductRating(model): Observable<StarRate> {
     debugger;

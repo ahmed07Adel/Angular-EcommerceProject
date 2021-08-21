@@ -18,7 +18,6 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { ChatComponent } from './chat/chat.component';
 import { AuthGuard } from 'src/Service/auth.guard';
-import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { ModalComponent } from './modal/modal.component';
     EditProductComponent,
     RegisterAdminComponent,
     ChatComponent,
-    ModalComponent
 
   ],
   imports: [
@@ -43,10 +41,8 @@ import { ModalComponent } from './modal/modal.component';
     FormsModule,
     ReactiveFormsModule,
     FormsModule
-
-
   ],
-  providers: [ AccountService, AuthGuard,{
+  providers: [ AccountService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

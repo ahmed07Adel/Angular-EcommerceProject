@@ -67,12 +67,10 @@ this.ProdUpdate = this.fb.group({
 
       this.ValidateModel();
       this.service.UpdateProduct(id, this.prod).subscribe(success => {
-
         alert('Product Updated Successfully');
         this.router.navigate(['/home']);
       }, err => console.log(err));
   }
-
 }
 onselect() {
   console.log(this.sel);

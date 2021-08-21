@@ -1,8 +1,10 @@
+import { AddToCartModel } from './../../Models/AddToCartModel';
 import { ProductService } from './../../Service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from 'src/Models/ProductModel';
 import { StarRate } from 'src/Models/StarRate';
+import { add } from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-product-details',
@@ -14,8 +16,9 @@ export class ProductDetailsComponent implements OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
   id: string;
+  quan: number=0;
+  QuanValue;
   prodid: number;
-
 prod: ProductModel;
 
   constructor(private activeRoute: ActivatedRoute, private service: ProductService) {
@@ -36,22 +39,31 @@ prod: ProductModel;
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44379/${serverPath}`;
   }
-onclick(){
+  GetQuantity() {
+    debugger;
+    console.log(this.quan);
+    var x = this.quan;
+    return x;
 
+  }
+onclick() {
+  debugger;
+  // this.Add.addTime.toUTCString();
+  this.service.AddProductToCart({productId: this.id, quantity: this.GetQuantity() }).subscribe(s => {
+console.log('added');
+}, err => console.log(err));
 }
   countStar(stars) {
-    debugger;
+
     let d = localStorage.getItem('userId');
-    // this.service.ProductRating({productId: this.id, rate: stars}).subscribe(x => {
     this.service.ProductRating({productId: this.id, rate: stars}).subscribe(x => {
-      debugger;
 
       d = x.userId;
-      // stars = x.RateId;
-          //  k = x['productId'];
+
     }, err => console.log(err));
     this.selectedValue = stars;
     console.log('Value of star', stars);
   }
+
 
 }

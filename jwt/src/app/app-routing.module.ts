@@ -1,4 +1,3 @@
-import { ModalComponent } from './modal/modal.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { CreateProductComponent } from './create-product/create-product.component';
@@ -23,11 +22,7 @@ const routes: Routes = [
   {path: 'createProduct', component: CreateProductComponent},
   {path: 'Edit-Product/:id', component: EditProductComponent},
   {path: 'registerAdmin', component: RegisterAdminComponent},
-  {path: 'chat', component: ChatComponent,canActivate:[AuthGuard]},
-  {path: 'modal', component: ModalComponent},
-
-
-
+  {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
