@@ -34,23 +34,27 @@ this.route.navigate(['login']);
 
 
   }
-  
+
   hide(){
-    var res = document.getElementById("hide");
-    if (localStorage.getItem('token')) {
-      res.style.display = 'none';
-    }
-    else{
-      res.style.display = 'show';
-    }
+    // var res = document.getElementById("hide");
+    // if (localStorage.getItem('token')) {
+    //   res.style.display = 'none';
+    // }
+    // else{
+    //   res.style.display = 'show';
+    // }
   }
   ngOnInit(): void {
     this.username = sessionStorage.getItem('loggeduser');
     this.service.GetCategories().subscribe(d=>{
+      if (this.Logout) {
+        var r = document.getElementById('userhide');
+        r.style.display = 'none';
+      }
       this.cat = d;
     }, err => console.log(err));  }
 
-   
+
   onselect(){
     if (this.sel == 1) {
 this.service.GetClothes().subscribe(a=>{
