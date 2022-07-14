@@ -12,15 +12,13 @@ export class AuthGuard implements CanActivate {
   constructor(private route: Router, private service: AccountService){}
   canActivate(): boolean{
     debugger;
-if (localStorage.getItem('token') != null && localStorage.getItem('token') != '') {
-  return true
+if (localStorage.getItem('token') != null) {
+  return true;
 }else{
   this.route.navigate(['/login'])
   return false;
 }
   }
-
-
   // canActivate(
   //   next: ActivatedRouteSnapshot,
   //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

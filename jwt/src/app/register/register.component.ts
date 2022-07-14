@@ -1,3 +1,5 @@
+import { GenderModel } from './../../Models/GenderModel';
+import { CategoryModel } from './../../Models/CategoryModel';
 import { RegisterModel } from './../../Models/RegisterModel';
 import { AccountService } from './../../Service/Account.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +15,8 @@ export class RegisterComponent implements OnInit {
   constructor(private service: AccountService, private route: Router, private fb: FormBuilder) { }
  reg: RegisterModel;
 userForm: FormGroup;
+GenderM: GenderModel[];
+selectedGender: number;
 messageValidate = {
   email:{
     required: 'Email Needed',
@@ -28,38 +32,39 @@ messageValidate = {
   }
 }
   ngOnInit() {
+    this.service.GetGenderDropDown().subscribe(a=>{
+         this.GenderM = a;
+    }, err => console.log(err));
     this.reg = {
       email: '',
       password:'',
-      confirmpassword:''
-
+      confirmpassword:'',
+      genderId:0
     };
-
 this.userForm = this.fb.group({
 email: ['', Validators.required],
 password: ['', [Validators.required, Validators.minLength(5)]],
-confirmpassword:['',Validators.required]
+confirmpassword:['',Validators.required],
+genderId:['',Validators.required],
 });
   }
   ValidateUserModel(){
     this.reg.email = this.userForm.value.email;
     this.reg.password = this.userForm.value.password;
     this.reg.confirmpassword = this.userForm.value.confirmpassword;
+    // this.reg.genderId = this.userForm.value.genderId;
   }
-register(){
-
-
+register() {
   if (this.userForm.valid) {
     this.ValidateUserModel();
-    this.service.Register(this.reg).subscribe(success=>{
+    this.service.Register(this.reg).subscribe(success => {
       alert('Account Registered Successfully');
       this.route.navigate(['login']);
-    },err => console.log(err));
-
+    }, err => console.log(err));
   }
-
 }
-isPathMatch(){
+
+isPathMatch() {
   if (this.userForm.value.password !== '' && this.userForm.value.confirmpassword !== '') {
     if ((this.userForm.value.password !== this.userForm.value.confirmpassword)&&
      this.userForm.value.password.length >= 5 && this.userForm.value.confirmpassword.length >=5) {

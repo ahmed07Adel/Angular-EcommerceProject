@@ -11,10 +11,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
 import { AuthGuard } from 'src/Service/auth.guard';
 
-
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  // {path: 'home', component: ProductsListComponent},
   {path: 'home', component: ProductsListComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
@@ -24,7 +22,6 @@ const routes: Routes = [
   {path: 'registerAdmin', component: RegisterAdminComponent},
   {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

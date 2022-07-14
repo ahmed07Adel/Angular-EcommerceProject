@@ -23,7 +23,7 @@ userDetails;
 
   ngOnInit(): void {
     if (localStorage.getItem('token')!= null) {
-      localStorage.getItem('userId');                       
+      localStorage.getItem('userId');
           }
     this.service.GetCategories().subscribe(d => {
       this.cat = d;
@@ -45,7 +45,7 @@ userDetails;
   onselect() {
     if (this.sel === 1) {
       this.service.GetClothes().subscribe(a => {
-      this.prod = a;
+
       }, err => console.log(err));
           }
     if (this.sel === 2) {

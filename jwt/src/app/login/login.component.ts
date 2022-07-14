@@ -25,15 +25,13 @@ messageValidate: {
     required: 'Password Neeeded',
     minLength: 'at least 5 characters'
   }
-
-
 };
 
   ngOnInit(): void {
     this.userId='';
     this.message = '';
     this.log = {
-     
+
       email: '',
       password: '',
       rememberMe: false
@@ -55,21 +53,18 @@ messageValidate: {
   login() {
 if (this.userLog.valid) {
   this.ValidateModel();
-  
+
   this.service.Login(this.log).subscribe(success => {
     console.log(success);
     localStorage.setItem('token', success['message']);
-   
     localStorage.setItem('userId',success['userId']);
-        localStorage.getItem('userId');
-localStorage.getItem('token');                
-sessionStorage.setItem('loggeduser',this.log.email);
-localStorage.getItem('loggeduser');
+    localStorage.getItem('userId');
+    localStorage.getItem('token');
+    sessionStorage.setItem('loggeduser', this.log.email);
+    localStorage.getItem('loggeduser');
+    location.reload();
     this.route.navigate(['home']);
-
-
-  }, err => console.log(err));  
-
+  }, err => console.log(err));
 }
 
   }

@@ -16,7 +16,6 @@ categ: CategoryModel[];
 c: CategoryModel;
 img: File;
   constructor(private service: ProductService, private router: Router, private fb: FormBuilder,private http: HttpClient) {
-
     this.prodM = new FormGroup({
         productname: new FormControl(),
       description: new FormControl(),
@@ -74,7 +73,6 @@ prodM: FormGroup;
     this.prod.price = this.prodM.value.price;
     this.prod.description = this.prodM.value.description;
     this.prod.productPic = this.prodM.value.productPic;
-
     this.prod.category = {"Id": this.prodM.value.category};
   }
   // onselect(event: any){

@@ -20,20 +20,19 @@ export class ProductDetailsComponent implements OnInit {
   QuanValue;
   prodid: number;
 prod: ProductModel;
-
+addedproducts:AddToCartModel[];
   constructor(private activeRoute: ActivatedRoute, private service: ProductService) {
-
   }
-
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       this.id = params.id;
       // console.log(id);
-
-
       this.service.GetProductById(this.id).subscribe(c => {
       this.prod = c;
 }, err => console.log(err));
+}, err => console.log(err));
+this.service.ListAddedItems().subscribe(a=>{
+this.addedproducts = a;
 }, err => console.log(err));
   }
   public createImgPath = (serverPath: string) => {
@@ -48,7 +47,6 @@ prod: ProductModel;
   }
 onclick() {
   debugger;
-  // this.Add.addTime.toUTCString();
   this.service.AddProductToCart({productId: this.id, quantity: this.GetQuantity() }).subscribe(s => {
 console.log('added');
 }, err => console.log(err));
@@ -57,13 +55,9 @@ console.log('added');
 
     let d = localStorage.getItem('userId');
     this.service.ProductRating({productId: this.id, rate: stars}).subscribe(x => {
-
       d = x.userId;
-
     }, err => console.log(err));
     this.selectedValue = stars;
     console.log('Value of star', stars);
   }
-
-
 }

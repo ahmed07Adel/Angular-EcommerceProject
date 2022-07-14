@@ -31,14 +31,16 @@ export class RegisterAdminComponent implements OnInit {
      this.reg = {
        email: '',
        password: '',
-       confirmpassword: ''
-
+       confirmpassword: '',
+       genderId:0
      };
 
      this.userForm = this.fb.group({
  email: ['', Validators.required],
  password: ['', [Validators.required, Validators.minLength(5)]],
- confirmpassword: ['', Validators.required]
+ confirmpassword: ['', Validators.required],
+ genderId: ['', Validators.required],
+
  });
    }
    ValidateUserModel() {

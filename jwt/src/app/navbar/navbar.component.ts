@@ -31,10 +31,7 @@ var r = document.getElementById('userhide');
 r.style.display = 'none';
 // window.location.reload();
 this.route.navigate(['login']);
-
-
   }
-
   hide(){
     // var res = document.getElementById("hide");
     // if (localStorage.getItem('token')) {
@@ -47,10 +44,14 @@ this.route.navigate(['login']);
   ngOnInit(): void {
     this.username = sessionStorage.getItem('loggeduser');
     this.service.GetCategories().subscribe(d=>{
-      if (this.Logout) {
-        var r = document.getElementById('userhide');
-        r.style.display = 'none';
-      }
+      // if (this.Logout) {
+      //   var r = document.getElementById('userhide');
+      //   //r.style.display = 'none';
+      // }
+      // else{
+      //   var r = document.getElementById('userhide');
+      //   r.style.display = true;
+      // }
       this.cat = d;
     }, err => console.log(err));  }
 

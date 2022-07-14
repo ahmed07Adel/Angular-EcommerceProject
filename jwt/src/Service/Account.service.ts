@@ -1,3 +1,4 @@
+import { GenderModel } from './../Models/GenderModel';
 import { RegisterModel } from './../Models/RegisterModel';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -20,15 +21,17 @@ export class AccountService{
   // Logout(){
   //   return this.http.post('https://localhost:44379/api/Account/Logout');
   // }
-  
-  
-  RegiterAdmin(reg: RegisterModel): Observable<RegisterModel>{
+  GetGenderDropDown(): Observable<GenderModel[]> {
+    return this.http.get<GenderModel[]>('https://localhost:44379/api/Account/GenderDropDownList').pipe();
+  }
+
+  RegiterAdmin(reg: RegisterModel): Observable<RegisterModel> {
     return this.http.post<RegisterModel>('https://localhost:44379/api/Account/AdminRegister', reg, this.headers).pipe();
   }
   Register(reg: RegisterModel): Observable<RegisterModel> {
     return this.http.post<RegisterModel>('https://localhost:44379/api/Account/Register', reg, this.headers).pipe();
   }
-  Login(log: LoginModel): Observable<LoginModel>{
+  Login(log: LoginModel): Observable<LoginModel> {
 
     return this.http.post<LoginModel>('https://localhost:44379/api/Account/Login', log, this.headers).pipe();
   }

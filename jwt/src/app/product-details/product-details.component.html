@@ -26,7 +26,7 @@
                       <div class="row">
 
                         <!-- Grid column -->
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" *ngFor="let p of addedproducts">
 
                           <!-- <h3 class="mb-4 py-2 text-center font-weight-bold text-uppercase">Your products</h3> -->
 
@@ -37,10 +37,10 @@
                               <a class="float-right">
                                 <i fa fa-icon="times"></i>
                               </a>
-                              <h5 class="mt-0 font-weight-bold text-primary">iPhone Xs Max 64GB</h5>
-                              <p class="font-weight-bold grey-text mb-2">Color: white</p>
+                              <h5 class="mt-0 font-weight-bold text-primary">{{p}}</h5>
+                              <p class="font-weight-bold grey-text mb-2">{{p}}</p>
                               <div class="d-flex justify-content-between">
-                                <p class="font-weight-bold">999$</p>
+                                <p class="font-weight-bold">{{p}}</p>
                                   <div class="def-number-input number-input safari_only mt-n05">
                                     <button class="minus"></button>
                                     <input class="form-control quantity font-weight-bold black-text" id="quan" min="0" [(ngModel)]="quan" name="quan"
@@ -53,14 +53,14 @@
                           </div>
 
                           <hr class="blue-border mb-4">
-                          <div class="d-flex justify-content-between px-2">
+                          <!-- <div class="d-flex justify-content-between px-2">
                             <p class="font-weight-bold">Discount:</p>
                             <p class="font-weight-bold">95$</p>
                           </div>
                           <div class="d-flex justify-content-between light-blue lighten-5 p-2">
                             <h5 class="font-weight-bold mb-0">Total:</h5>
                             <h5 class="font-weight-bold mb-0">1789$</h5>
-                          </div>
+                          </div> -->
 
                         </div>
                         <!-- Grid column -->
@@ -153,7 +153,6 @@
       var button = $(event.relatedTarget);
       var modal = $(this);
       // Use above variables to manipulate the DOM
-
     });
   </script>
 
@@ -288,7 +287,7 @@
         </table>
       </div>
       <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
-      <button type="button" (click)="onclick();GetQuantity()" class="btn btn-light btn-md mr-1 mb-2"><i
+      <button type="button" (click)="onclick();GetQuantity()"  class="btn btn-light btn-md mr-1 mb-2"><i
           class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
           <button type="button" class="btn btn-primary btn-md mr-1 mb-2" data-toggle="modal" data-target="#modelId">View Cart Items</button>
     </div>

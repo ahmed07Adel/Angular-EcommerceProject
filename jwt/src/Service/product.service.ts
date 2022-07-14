@@ -19,6 +19,10 @@ export class ProductService {
     withCredentials: true
 
   };
+  ListAddedItems(): Observable<AddToCartModel[]> {
+    debugger;
+    return this.http.get<AddToCartModel[]>('https://localhost:44379/api/Product/ListingCartItems').pipe();
+  }
   AddProductToCart(add): Observable<AddToCartModel> {
     debugger;
     return this.http.post<AddToCartModel>('https://localhost:44379/api/Product/AddToCart', add).pipe();
