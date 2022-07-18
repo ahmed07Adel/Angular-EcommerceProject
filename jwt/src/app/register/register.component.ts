@@ -39,20 +39,24 @@ messageValidate = {
       email: '',
       password:'',
       confirmpassword:'',
-      genderId:0
+      genderId:0,
+      active:false
     };
 this.userForm = this.fb.group({
 email: ['', Validators.required],
 password: ['', [Validators.required, Validators.minLength(5)]],
 confirmpassword:['',Validators.required],
 genderId:['',Validators.required],
+active:['',Validators.required],
+
 });
   }
   ValidateUserModel(){
     this.reg.email = this.userForm.value.email;
     this.reg.password = this.userForm.value.password;
     this.reg.confirmpassword = this.userForm.value.confirmpassword;
-    // this.reg.genderId = this.userForm.value.genderId;
+    this.reg.genderId = this.userForm.value.genderId;
+    this.reg.active = this.userForm.value.active;
   }
 register() {
   if (this.userForm.valid) {

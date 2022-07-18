@@ -3,4 +3,5 @@ email: string;
 password: string;
 confirmpassword: string;
 genderId: number;
+active: boolean;
 }
