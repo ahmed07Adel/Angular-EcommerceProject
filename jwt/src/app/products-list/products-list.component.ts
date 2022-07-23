@@ -20,10 +20,14 @@ sel;
 userDetails;
 total = 0;
 page = 1;
-limit = 5;
+limit = 3;
 
   constructor(private service: ProductService,private accservice: AccountService) { }
-
+GetAllProducts(): void {
+    this.service.GetProducts(this.page, this.limit).subscribe(p => {
+    this.prod = p;
+  }, err => console.log(err));
+}
   ngOnInit(): void {
     if (localStorage.getItem('token')!= null) {
       localStorage.getItem('userId');
@@ -69,15 +73,16 @@ this.ngOnInit();
 
   }
   goToPrevious(): void{
-    console.log("asas");
-this.page--;
+    this.page--;
+    this.GetAllProducts();
   }
   goToNext(): void{
     this.page++;
+    this.GetAllProducts();
    }
    goToPage(n: number): void{
     this.page = n;
-    this.ngOnInit();
+    this.GetAllProducts();
    }
 
 //   GetUser(){

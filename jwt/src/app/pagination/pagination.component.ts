@@ -27,7 +27,7 @@ export class PaginationComponent implements OnInit {
   onnext(): void{
     this.gonext.emit(true);
   }
-  onPage(n:number): void{
+  onPage(n: number): void{
     this.goPage.emit(n);
    }
 
