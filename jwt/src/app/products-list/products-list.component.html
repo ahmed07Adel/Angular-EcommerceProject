@@ -50,3 +50,12 @@
       </div>
 
     </div>
+    <div class="row">
+     <app-pagination
+     (goPage)="goToPage($event)"
+     (goPrev)="goToPrevious()"
+     (gonext)="goToNext()"
+     [page]="page"
+     [perpage]="limit">
+     </app-pagination>
+    </div>

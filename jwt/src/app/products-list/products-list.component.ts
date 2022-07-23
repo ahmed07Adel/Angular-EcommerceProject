@@ -18,6 +18,9 @@ cat: CategoryModel[];
 ProductName: string;
 sel;
 userDetails;
+total = 0;
+page = 1;
+limit = 5;
 
   constructor(private service: ProductService,private accservice: AccountService) { }
 
@@ -29,7 +32,7 @@ userDetails;
       this.cat = d;
     }, err => console.log(err));
     this.pr = [];
-    this.service.GetProducts().subscribe(p => {
+    this.service.GetProducts(this.page, this.limit).subscribe(p => {
       this.prod = p;
     }, err => console.log(err));
   }
@@ -65,6 +68,18 @@ this.ngOnInit();
 }
 
   }
+  goToPrevious(): void{
+    console.log("asas");
+this.page--;
+  }
+  goToNext(): void{
+    this.page++;
+   }
+   goToPage(n: number): void{
+    this.page = n;
+    this.ngOnInit();
+   }
+
 //   GetUser(){
 //     if (localStorage.getItem('token')!= null) {
 //       debugger;

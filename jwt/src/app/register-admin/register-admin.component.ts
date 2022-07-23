@@ -32,7 +32,8 @@ export class RegisterAdminComponent implements OnInit {
        email: '',
        password: '',
        confirmpassword: '',
-       genderId:0
+       genderId:0,
+       active:false
      };
 
      this.userForm = this.fb.group({

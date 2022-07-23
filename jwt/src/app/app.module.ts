@@ -18,6 +18,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { ChatComponent } from './chat/chat.component';
 import { AuthGuard } from 'src/Service/auth.guard';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthGuard } from 'src/Service/auth.guard';
     EditProductComponent,
     RegisterAdminComponent,
     ChatComponent,
+    PaginationComponent,
 
   ],
   imports: [

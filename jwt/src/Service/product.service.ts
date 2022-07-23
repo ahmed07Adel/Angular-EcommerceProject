@@ -43,9 +43,11 @@ export class ProductService {
   GetCategories(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>('https://localhost:44379/api/Category/GetCategories').pipe();
   }
-  GetProducts(): Observable<ProductModel[]> {
-
-    return this.http.get<ProductModel[]>('https://localhost:44379/api/Product/GetAllProducts').pipe();
+  GetProducts(PageNumber: number, PageSize: number): Observable<ProductModel[]> {
+    return this.http.
+    get<ProductModel[]>
+    ('https://localhost:44379/api/Product/GetAllProducts?' + 'PageNumber=' + PageNumber + '&' + 'PageSize=' + PageSize)
+    .pipe();
   }
 GetProductById(id: string): Observable<ProductModel>{
   return this.http.get<ProductModel>('https://localhost:44379/api/Product/GetProductById/' + id).pipe();
